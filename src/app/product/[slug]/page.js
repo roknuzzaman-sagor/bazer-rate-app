@@ -31,27 +31,23 @@ function ProductContent() {
     const { slug } = useParams();
     const router = useRouter();
 
-    const [product, setProduct] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
+    const [result, setResult] = useState(null);
+    const loading = !result || result.slug !== slug;
+    const product = result?.slug === slug ? result.product : null;
+    const error = result?.slug === slug && result.error;
 
     useEffect(() => {
         if (!slug) return;
         let mounted = true;
-        setLoading(true);
-        setError(false);
-
         fetchProductBySlug(slug)
             .then((data) => {
                 if (!mounted) return;
-                setProduct(data || null);
+                setResult({ slug, product: data || null, error: false });
             })
             .catch(() => {
                 if (!mounted) return;
-                setProduct(null);
-                setError(true);
-            })
-            .finally(() => mounted && setLoading(false));
+                setResult({ slug, product: null, error: true });
+            });
 
         return () => {
             mounted = false;
@@ -144,7 +140,7 @@ function ProductContent() {
                     </div>
 
                     {/* today price box */}
-                    <div className="bg-gray-50 rounded-xl px-5 py-4 text-center min-w-[150px] shrink-0">
+                    <div className="bg-gray-50 rounded-xl px-5 py-4 text-center min-w-37.5 shrink-0">
                         <p className="text-xs text-gray-500">আজকের দাম</p>
                         <p className="text-3xl font-bold text-gray-900 mt-1">
                             {toBn(today)}

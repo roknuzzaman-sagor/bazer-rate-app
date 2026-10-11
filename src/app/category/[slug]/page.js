@@ -14,13 +14,13 @@ function CategoryContent() {
 
   const [category, setCategory] = useState(null);
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loadedSlug, setLoadedSlug] = useState(null);
   const [sort, setSort] = useState("default");
+  const loading = !slug || loadedSlug !== slug;
 
   useEffect(() => {
     if (!slug) return;
     let mounted = true;
-    setLoading(true);
 
     Promise.all([
       getCategory(slug).catch(() => null),
@@ -30,13 +30,14 @@ function CategoryContent() {
         if (!mounted) return;
         setCategory(catRes?.category || catRes || null);
         setProducts(asArray(prodRes));
+        setLoadedSlug(slug);
       })
       .catch(() => {
         if (!mounted) return;
         setCategory(null);
         setProducts([]);
-      })
-      .finally(() => mounted && setLoading(false));
+        setLoadedSlug(slug);
+      });
 
     return () => {
       mounted = false;

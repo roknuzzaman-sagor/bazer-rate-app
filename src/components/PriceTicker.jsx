@@ -42,7 +42,7 @@ export default function PriceTicker() {
   }, []);
 
   if (!items.length) {
-    return <div className="bg-white border-b border-gray-100 h-[42px]" />;
+    return <div className="bg-white border-b border-gray-100 h-10.5" />;
   }
 
   const doubled = [...items, ...items];
