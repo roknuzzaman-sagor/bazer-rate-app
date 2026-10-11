@@ -2,6 +2,7 @@ import { Hind_Siliguri, Noto_Sans_Bengali } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import PriceTicker from "@/components/PriceTicker";
+import Footer from "@/components/Footer";
 
 const hindSiliguri = Hind_Siliguri({
   subsets: ["bengali", "latin"],
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         <PriceTicker />
         <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );
