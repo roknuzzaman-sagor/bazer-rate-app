@@ -64,7 +64,7 @@ export default function CategoryNav() {
 
   return (
     <nav className="py-3.5 -mx-4 px-4 overflow-x-auto no-scrollbar">
-      <ul className="flex items-center gap-2 md:gap-3 md:justify-center whitespace-nowrap">
+      <ul className="flex items-center gap-2 md:gap-3  whitespace-nowrap">
         {categories.map((cat) => (
           <li key={cat.slug}>
             <Suspense fallback={<PillFallback cat={cat} />}>

@@ -16,7 +16,9 @@ export default function HomePage() {
       .then((data) => mounted && setProducts(asArray(data)))
       .catch(() => mounted && setProducts([]))
       .finally(() => mounted && setLoading(false));
-    return () => { mounted = false; };
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   const risers = [...products]
@@ -52,11 +54,7 @@ export default function HomePage() {
               : `মোট ${toBn(products.length)}টি পণ্য দেখানো হচ্ছে`
           }
         />
-        <ProductGrid
-          products={products}
-          loading={loading}
-          skeletonCount={9}
-        />
+        <ProductGrid products={products} loading={loading} skeletonCount={9} />
       </section>
     </div>
   );

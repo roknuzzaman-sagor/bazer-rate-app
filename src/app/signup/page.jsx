@@ -19,8 +19,7 @@ export default function SignUpPage() {
   });
   const [loading, setLoading] = useState(false);
 
-  const update = (key, value) =>
-    setForm((prev) => ({ ...prev, [key]: value }));
+  const update = (key, value) => setForm((prev) => ({ ...prev, [key]: value }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -61,7 +60,6 @@ export default function SignUpPage() {
       subtitle="বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।"
     >
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* নাম */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1.5">
             নাম
@@ -76,7 +74,6 @@ export default function SignUpPage() {
           />
         </div>
 
-        {/* ইমেইল */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1.5">
             ইমেইল
@@ -91,7 +88,6 @@ export default function SignUpPage() {
           />
         </div>
 
-        {/* পাসওয়ার্ড */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1.5">
             পাসওয়ার্ড
@@ -107,7 +103,6 @@ export default function SignUpPage() {
           />
         </div>
 
-        {/* পাসওয়ার্ড নিশ্চিত */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1.5">
             পাসওয়ার্ড নিশ্চিত করুন
@@ -123,7 +118,6 @@ export default function SignUpPage() {
           />
         </div>
 
-        {/* Submit */}
         <button
           type="submit"
           disabled={loading}
@@ -143,10 +137,8 @@ export default function SignUpPage() {
         </div>
       </div>
 
-      {/* Social */}
       <SocialButtons />
 
-      {/* Bottom link */}
       <p className="text-center text-sm text-gray-600 mt-6">
         অ্যাকাউন্ট আছে?{" "}
         <Link

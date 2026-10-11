@@ -10,20 +10,28 @@ export default function UpdateProfilePage() {
   const router = useRouter();
   const { data: session, isPending } = authClient.useSession();
 
-  const [name, setName] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  /* Redirect if not logged in + prefill name */
+  /* Redirect if not logged in */
   useEffect(() => {
     if (!isPending && !session) {
       toast.error("সাইন ইন করুন");
       router.push("/signin");
-      return;
     }
-    if (session?.user?.name) setName(session.user.name);
   }, [isPending, session, router]);
 
   if (isPending || !session) return null;
+
+  return (
+    <ProfileForm
+      key={session.user.name}
+      session={session}
+      router={router}
+    />
+  );
+}
+
+function ProfileForm({ session, router }) {
+  const [name, setName] = useState(session.user.name || "");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

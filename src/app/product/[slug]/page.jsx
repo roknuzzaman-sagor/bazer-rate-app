@@ -44,34 +44,32 @@ function ProductContent() {
     }
   }, [isPending, session, router]);
 
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [result, setResult] = useState(null);
 
   /* fetch only when session available */
   useEffect(() => {
     if (!session || !slug) return;
     let mounted = true;
-    setLoading(true);
-    setError(false);
 
     fetchProductBySlug(slug)
       .then((data) => {
         if (!mounted) return;
-        setProduct(data || null);
+        setResult({ slug, product: data || null, error: false });
       })
       .catch(() => {
         if (!mounted) return;
-        setProduct(null);
-        setError(true);
+        setResult({ slug, product: null, error: true });
       })
-      .finally(() => mounted && setLoading(false));
 
     return () => {
       mounted = false;
     };
   }, [slug, session]);
 
+  const currentResult = result?.slug === slug ? result : null;
+  const loading = Boolean(session && slug && !currentResult);
+  const product = currentResult?.product ?? null;
+  const error = currentResult?.error ?? false;
 
   if (isPending) return <ProductSkeleton />;
 
@@ -160,7 +158,7 @@ function ProductContent() {
             )}
           </div>
 
-          <div className="bg-gray-50 rounded-xl px-5 py-4 text-center min-w-[150px] shrink-0">
+          <div className="bg-gray-50 rounded-xl px-5 py-4 text-center min-w-37.5 shrink-0">
             <p className="text-xs text-gray-500">আজকের দাম</p>
             <p className="text-3xl font-bold text-gray-900 mt-1 num">
               {toBn(today)}
