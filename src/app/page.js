@@ -19,13 +19,11 @@ export default function HomePage() {
     return () => { mounted = false; };
   }, []);
 
-  /* Section A: top 6 risers (change.pct > 0, sorted desc) */
   const risers = [...products]
     .filter((p) => (p.change?.pct ?? 0) > 0)
     .sort((a, b) => b.change.pct - a.change.pct)
     .slice(0, 6);
 
-  /* Section B: top 6 fallers (change.pct < 0, sorted asc = most negative first) */
   const fallers = [...products]
     .filter((p) => (p.change?.pct ?? 0) < 0)
     .sort((a, b) => a.change.pct - b.change.pct)
@@ -35,19 +33,16 @@ export default function HomePage() {
     <div className="container-main pb-10">
       <Hero />
 
-      {/* Section A — আজ দাম বেড়েছে */}
       <section className="mt-6">
         <SectionHeader title="▲ আজ দাম বেড়েছে" tone="up" />
         <ProductGrid products={risers} loading={loading} skeletonCount={6} />
       </section>
 
-      {/* Section B — আজ দাম কমেছে */}
       <section className="mt-10">
         <SectionHeader title="▼ আজ দাম কমেছে" tone="down" />
         <ProductGrid products={fallers} loading={loading} skeletonCount={6} />
       </section>
 
-      {/* Section C — সব পণ্য */}
       <section id="সব-পণ্য" className="mt-10 scroll-mt-24">
         <SectionHeader
           title="সব পণ্য"

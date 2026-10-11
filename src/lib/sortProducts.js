@@ -1,3 +1,4 @@
+
 export function sortProducts(products, mode) {
   const list = [...products];
   if (mode === "price-asc") {

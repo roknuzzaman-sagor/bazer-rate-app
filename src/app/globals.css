@@ -2,79 +2,58 @@
 @plugin "daisyui";
 
 @theme {
-    --color-primary: #16a34a;
-    --color-primary-dark: #15803d;
-    --color-primary-soft: #dcfce7;
-    --color-page-bg: #f4f7f4;
+  --color-primary: #16a34a;
+  --color-primary-dark: #15803d;
+  --color-primary-soft: #dcfce7;
+  --color-page-bg: #f4f7f4;
 
-    --color-up: #ef4444;
-    --color-up-bg: #fef2f2;
-    --color-down: #16a34a;
-    --color-down-bg: #f0fdf4;
-    --color-flat: #6b7280;
-    --color-flat-bg: #f3f4f6;
+  --color-up: #ef4444;
+  --color-up-bg: #fef2f2;
+  --color-down: #16a34a;
+  --color-down-bg: #f0fdf4;
+  --color-flat: #6b7280;
+  --color-flat-bg: #f3f4f6;
 
-    --font-bangla: var(--font-hind-siliguri), "Hind Siliguri", sans-serif;
+  --font-bangla: var(--font-hind-siliguri), "Hind Siliguri", sans-serif;
 
-    --animate-marquee: marquee 40s linear infinite;
+  --animate-marquee: marquee 40s linear infinite;
 
-    @keyframes marquee {
-        from {
-            transform: translateX(0);
-        }
-
-        to {
-            transform: translateX(-50%);
-        }
-    }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: var(--font-bangla);
-    background-color: var(--color-page-bg);
-    color: #111827;
+  font-family: var(--font-bangla);
+  background-color: var(--color-page-bg);
+  color: #111827;
 }
 
-layer base {
-    .num {
-        font-variant-numeric: tabular-nums;
-        font-feature-settings: "tnum";
-    }
-}
-
-
+/* ---------- Number style — tabular align only ---------- */
 .num,
 [data-num] {
-    font-family: var(--font-noto-bn), "Noto Sans Bengali", sans-serif;
-    font-variant-numeric: tabular-nums;
-    font-feature-settings: "tnum";
-    letter-spacing: 0.02em;
-    font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  letter-spacing: 0.02em;
+  font-weight: 500;
 }
 
 @layer components {
-    .container-main {
-        @apply max-w-6xl mx-auto px-4;
-    }
-
-    .btn-primary-green {
-        @apply bg-primary hover:bg-primary-dark text-white rounded-lg px-5 py-2.5 font-medium transition;
-    }
-
-    .card-base {
-        @apply bg-white rounded-xl border border-gray-100 hover:shadow-md transition-shadow;
-    }
+  .container-main {
+    @apply max-w-6xl mx-auto px-4;
+  }
+  .btn-primary-green {
+    @apply bg-primary hover:bg-primary-dark text-white rounded-lg px-5 py-2.5 font-medium transition;
+  }
+  .card-base {
+    @apply bg-white rounded-xl border border-gray-100 hover:shadow-md transition-shadow;
+  }
 }
 
-.no-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-
-.no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
