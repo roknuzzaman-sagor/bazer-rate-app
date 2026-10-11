@@ -69,7 +69,7 @@ export default function SignUpPage() {
             required
             value={form.name}
             onChange={(e) => update("name", e.target.value)}
-            placeholder="যেমন: রেজওয়ান আহমেদ"
+            placeholder="Enter your name"
             className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/40"
           />
         </div>
@@ -83,7 +83,7 @@ export default function SignUpPage() {
             required
             value={form.email}
             onChange={(e) => update("email", e.target.value)}
-            placeholder="you@example.com"
+            placeholder="Enter your email"
             className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/40"
           />
         </div>
@@ -98,7 +98,7 @@ export default function SignUpPage() {
             minLength={8}
             value={form.password}
             onChange={(e) => update("password", e.target.value)}
-            placeholder="কমপক্ষে ৮ অক্ষর"
+            placeholder="Enter your password"
             className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/40"
           />
         </div>
@@ -113,7 +113,7 @@ export default function SignUpPage() {
             minLength={8}
             value={form.confirm}
             onChange={(e) => update("confirm", e.target.value)}
-            placeholder="আবার লিখুন"
+            placeholder="Confirm your password"
             className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/40"
           />
         </div>
